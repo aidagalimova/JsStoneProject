@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 <link rel="stylesheet" href="pr.css">
+</head>
+<body id = 'body'>
+	<button class = 'start' id ='start' onclick="changeBackground()">
+          <h2><b>Start</b></h2></button>;
+	<div id = 'section'>
+    </div>
+<script type="text/javascript">
+	   function changeBackground() {
+	  	var div = document.getElementById('section');
+	  	div.classList.add('water');
+	  	var start = document.getElementById('start');
+	  	start.remove();
+	  	var stone = '<img class = "stone" src="photos/stone.png" onclick="clickOnStone()"></img>';
+	  	localStorage.setItem('count',0);
+	  	var text = '<h1 class = "t" id = "t" >Нажми!</h1>'
+	  	div.innerHTML = text + div.innerHTML;
+	  	div.innerHTML = stone + div.innerHTML;
+      var bar = '<div id="myProgress"><div id="myBar"></div></div>';
+      div.innerHTML = bar + div.innerHTML;
+      var elem = document.getElementById("myBar");
+  };
+  function clickOnStone()
+  {
+  	stoneAnimation();
+  	var div = document.getElementById('section');
+  	var count = localStorage.getItem('count');
+    var mybar = document.getElementById("myBar");
+    var myprogress = document.getElementById("myProgress");
+    var stone = document.getElementsByClassName('stone')[0];
+  	count = +count + 1;
+  	localStorage.setItem('count',count);
+    if(+count==1)
+    {
+     var click = document.getElementById('t');
+      click.remove();
+    }
+  	if(+count==10){
+    var fishButton = '<button class = "fishB" onclick = "fish()"><h1 id = "fishT">быть съеденным</h1></button>';
+  	div.innerHTML = fishButton + div.innerHTML;
+    myProgress.remove();
+  	stone.style.marginLeft='-21%';
+    stone.style.marginTop = '-31';
+  	}
+    mybar.style.width = (count*2)+'%';
+    stone.style.filter = 'brightness('+(100-count*1.4)+'%)';
+  }
+
+  function stoneAnimation()
+  {
+  	var stone = document.getElementsByClassName('stone')[0];
+  	let start = Date.now()-90;
+  	let timer = setInterval(function() {
+    let timePassed = Date.now() - start;
+    if (timePassed >= 200) {
+    clearInterval(timer);
+    return;}
+    function draw(timePassed) {
+    stone.style.width = timePassed	 * 0.1 + '%';
+    stone.style.height = timePassed * 0.2 + '%';}
+    draw(timePassed);}, 20);
+  }
+  function fish()
+  {
+  	var div = document.getElementById('section');
+  	var fish = '<img class = "fish" src="photos/fish2.gif"></img>';
+  	div.innerHTML = fish + div.innerHTML;
+  	var stone = document.getElementsByClassName('stone')[0];
+  	stone.style.marginLeft='44%';
+  	var click = document.getElementsByClassName('fishB')[0];
+  	click.remove();
+  	fishAnim();
+  	setTimeout(hz, 3000);
+    }
+function fishAnim()
+{
+  var fish = document.getElementsByClassName('fish')[0];
+  var stone = document.getElementsByClassName('stone')[0];
+  let start = Date.now()+1000;
+  let timer = setInterval(function() {
+  let timePassed = Date.now() - start;
+  if (timePassed >= 700) {
+    clearInterval(timer); 
+    return;}
+  draw(timePassed);}, 20);
+  function draw(timePassed) {
+  fish.style.marginLeft = timePassed * 0.03+ '%';}
+}
+
+function hz()
+{
+	var div = document.getElementById('section');
+  	var choose = '<div id = "choose"><button class = "f" onclick = "fish()"><h1 class = "choose1">быть съеденным</h1></button> <button class = "s" onclick = "onfisherman()"><h1 class = "choose2">быть пойманным</h1></button></div>'
+  	div.innerHTML = choose + div.innerHTML;
+  	var fish = document.getElementsByClassName('fish')[0];
+  	var stone = document.getElementsByClassName('stone')[0];
+  	fish.style.marginTop = '-26%'
+  	stone.remove();
+}
+function onfisherman()
+{
+  var fish = document.getElementsByClassName('fish')[0];
+  var stone = document.getElementsByClassName('stone')[0];
+  var f = document.getElementsByClassName('f')[0];
+  var s = document.getElementsByClassName('s')[0];
+  var div = document.getElementById('section');
+  div.classList.remove('water');
+  div.classList.add('fisher');
+  f.remove();
+  s.remove();
+  fish.remove();
+  var nextButton = '<button class = "next" onclick = "toCoast()"><h1 class = "nextT">далее</h1></button>';
+  div.innerHTML = nextButton + div.innerHTML;
+}
+function toCoast(){
+  var div = document.getElementById('section');
+  div.classList.remove('fisher');
+  div.classList.add('coast');
+  document.getElementsByClassName('next')[0].remove();
+  var fisherman= '<img class = "fisherman" src="photos/fisherman.png"></img>';
+  div.innerHTML = fisherman + div.innerHTML;
+    var div = document.getElementById('section');
+    var choose = '<div id = "choose"><button class = "f" onclick = "throwStone()"><h1 class = "choose1">выбросить камень</h1></button> <button class = "s" onclick = "onfisherman()"><h1 class = "choose2">положить камень в карман</h1></button></div>';
+    div.innerHTML = choose + div.innerHTML;
+}
+function throwStone()
+{
+  localStorage.setItem('count', 0)
+  var div = document.getElementById('section');
+  document.getElementsByClassName('fisherman')[0].remove();
+  div.classList.remove('coast');
+  div.classList.add('throw');
+  var stone = '<img class = "stone" src="photos/stone.png" onclick="clickOnStone2()"></img>';
+  var text = '<h1 class = "t" id = "t" >Кликай</h1>'
+  div.innerHTML = text + div.innerHTML;
+  div.innerHTML = stone + div.innerHTML;
+  document.getElementsByClassName('stone')[0].style.marginTop = '30%';
+  var button = document.getElementsByClassName('f')[0];
+  button.remove();
+  var button = document.getElementsByClassName('s')[0];
+  button.remove();
+  var bar = '<div id="myProgress2"><div id="myBar2"></div></div>';
+  div.innerHTML = bar + div.innerHTML;
+}
+
+function clickOnStone2()
+{
+    stoneAnimation();
+    var div = document.getElementById('section');
+    var count = localStorage.getItem('count');
+    var mybar = document.getElementById("myBar2");
+    var myprogress = document.getElementById("myProgress2");
+    count = +count + 1;
+    localStorage.setItem('count',count);
+    if(+count==1)
+    {
+     var click = document.getElementById('t');
+      click.remove();
+    }
+    if(+count==10){
+       myprogress.remove();
+     var choose = '<div id = "choose"><button class = "f" onclick = "throwStone()"><h1 class = "choose1">выбросить камень</h1></button> <button class = "s" onclick = "onfisherman()"><h1 class = "choose2">положить камень в карман</h1></button></div>';
+    div.innerHTML = choose + div.innerHTML;
+    }
+    mybar.style.width = (count*2)+'%';
+    document.getElementsByClassName('stone')[0].style.filter = 'brightness('+(100-count*1.4)+'%)';}
+function story1()
+{
+  var div = document.getElementById('section');
+  var text = '<h1 class = "text" >Проходящий мимо парень споткнулся об камень и написал злобный твит о камене</h1>'
+  div.innerHTML = text + div.innerHTML;
+  var nextButton = '<button class = "next" onclick = "toTwit()"><h1 class = "nextT">далее</h1></button>';
+  div.innerHTML = nextButton + div.innerHTML;
+}
+</script>
+</body>
+</html>
