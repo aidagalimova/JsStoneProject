@@ -5,16 +5,24 @@
 	 <link rel="stylesheet" href="pr.css">
 </head>
 <body id = 'body'>
-	<button class = 'start' id ='start' onclick="changeBackground()">
+	<button class = 'start' id ='start' onclick="removeAndChange()">
           <h2><b>Start</b></h2></button>;
 	<div id = 'section'>
     </div>
 <script type="text/javascript">
+    function removeAndChange()
+    {
+      var start = document.getElementById('start');
+      start.remove();
+      changeBackground();
+    }
 	   function changeBackground() {
+      var audio = new Audio('music.mp3');
+      audio.volume = 0.4;
+      audio.play();
+      audio.loop = true;
 	  	var div = document.getElementById('section');
 	  	div.classList.add('water');
-	  	var start = document.getElementById('start');
-	  	start.remove();
 	  	var stone = '<img class = "stone" src="photos/stone.png" onclick="clickOnStone()"></img>';
 	  	localStorage.setItem('count',0);
 	  	var text = '<h1 class = "t" id = "t" >Нажми!</h1>'
@@ -24,8 +32,11 @@
       div.innerHTML = bar + div.innerHTML;
       var elem = document.getElementById("myBar");
   };
+
   function clickOnStone()
   {
+    var audio = new Audio('click.mp3');
+    audio.play();
   	stoneAnimation();
   	var div = document.getElementById('section');
   	var count = localStorage.getItem('count');
@@ -37,16 +48,15 @@
     if(+count==1)
     {
      var click = document.getElementById('t');
-      click.remove();
-    }
-  	if(+count==10){
+      click.remove();    }
+  	if(+count==5){
     var fishButton = '<button class = "fishB" onclick = "fish()"><h1 id = "fishT">быть съеденным</h1></button>';
   	div.innerHTML = fishButton + div.innerHTML;
     myProgress.remove();
   	stone.style.marginLeft='-21%';
-    stone.style.marginTop = '-31';
+    stone.style.marginTop = '-31%';
   	}
-    mybar.style.width = (count*2)+'%';
+    mybar.style.width = (count*4)+'%';
     stone.style.filter = 'brightness('+(100-count*1.4)+'%)';
   }
 
@@ -66,6 +76,8 @@
   }
   function fish()
   {
+    var audio = new Audio('click.mp3');
+    audio.play();
   	var div = document.getElementById('section');
   	var fish = '<img class = "fish" src="photos/fish2.gif"></img>';
   	div.innerHTML = fish + div.innerHTML;
@@ -74,7 +86,7 @@
   	var click = document.getElementsByClassName('fishB')[0];
   	click.remove();
   	fishAnim();
-  	setTimeout(hz, 3000);
+  	setTimeout(throwOrEat, 3000);
     }
 function fishAnim()
 {
@@ -91,7 +103,7 @@ function fishAnim()
   fish.style.marginLeft = timePassed * 0.03+ '%';}
 }
 
-function hz()
+function throwOrEat()
 {
 	var div = document.getElementById('section');
   	var choose = '<div id = "choose"><button class = "f" onclick = "fish()"><h1 class = "choose1">быть съеденным</h1></button> <button class = "s" onclick = "onfisherman()"><h1 class = "choose2">быть пойманным</h1></button></div>'
@@ -103,6 +115,8 @@ function hz()
 }
 function onfisherman()
 {
+   var audio = new Audio('click.mp3');
+    audio.play();
   var fish = document.getElementsByClassName('fish')[0];
   var stone = document.getElementsByClassName('stone')[0];
   var f = document.getElementsByClassName('f')[0];
@@ -117,6 +131,8 @@ function onfisherman()
   div.innerHTML = nextButton + div.innerHTML;
 }
 function toCoast(){
+  var audio = new Audio('click.mp3');
+    audio.play();
   var div = document.getElementById('section');
   div.classList.remove('fisher');
   div.classList.add('coast');
@@ -124,57 +140,255 @@ function toCoast(){
   var fisherman= '<img class = "fisherman" src="photos/fisherman.png"></img>';
   div.innerHTML = fisherman + div.innerHTML;
     var div = document.getElementById('section');
-    var choose = '<div id = "choose"><button class = "f" onclick = "throwStone()"><h1 class = "choose1">выбросить камень</h1></button> <button class = "s" onclick = "onfisherman()"><h1 class = "choose2">положить камень в карман</h1></button></div>';
+    var choose = '<div id = "choose"><button class = "f" onclick = "removeAndThrow()"><h1 class = "choose1">выбросить камень</h1></button> <button class = "s" onclick = "onfisherman()"><h1 class = "choose2">положить камень в карман</h1></button></div>';
     div.innerHTML = choose + div.innerHTML;
 }
-function throwStone()
+
+function removeAndThrow()
 {
-  localStorage.setItem('count', 0)
   var div = document.getElementById('section');
   document.getElementsByClassName('fisherman')[0].remove();
   div.classList.remove('coast');
-  div.classList.add('throw');
-  var stone = '<img class = "stone" src="photos/stone.png" onclick="clickOnStone2()"></img>';
-  var text = '<h1 class = "t" id = "t" >Кликай</h1>'
-  div.innerHTML = text + div.innerHTML;
-  div.innerHTML = stone + div.innerHTML;
-  document.getElementsByClassName('stone')[0].style.marginTop = '30%';
-  var button = document.getElementsByClassName('f')[0];
+   var button = document.getElementsByClassName('f')[0];
   button.remove();
   var button = document.getElementsByClassName('s')[0];
   button.remove();
+  throwStone();
+}
+function throwStone()
+{
+  var audio = new Audio('click.mp3');
+    audio.play();
+  localStorage.setItem('count', 0)
+  var div = document.getElementById('section');
+  div.classList.add('throw');
+  var stone = '<img class = "stone" src="photos/stone.png" onclick="clickOnStone2()"></img>';
+  var text = '<h1 class = "t2" id = "t" >Кликай</h1>'
+  div.innerHTML = text + div.innerHTML;
+  div.innerHTML = stone + div.innerHTML;
+  document.getElementsByClassName('stone')[0].style.marginTop = '30%';
   var bar = '<div id="myProgress2"><div id="myBar2"></div></div>';
   div.innerHTML = bar + div.innerHTML;
 }
 
 function clickOnStone2()
 {
+  var audio = new Audio('click.mp3');
+    audio.play();
     stoneAnimation();
     var div = document.getElementById('section');
     var count = localStorage.getItem('count');
     var mybar = document.getElementById("myBar2");
     var myprogress = document.getElementById("myProgress2");
+    var stone = document.getElementsByClassName('stone');
     count = +count + 1;
     localStorage.setItem('count',count);
     if(+count==1)
     {
-     var click = document.getElementById('t');
-      click.remove();
+     var text = document.getElementById('t');
+      text.remove();
     }
-    if(+count==10){
+    if(+count==5){
+      stone[0].style.marginTop = '-60%';
        myprogress.remove();
-     var choose = '<div id = "choose"><button class = "f" onclick = "throwStone()"><h1 class = "choose1">выбросить камень</h1></button> <button class = "s" onclick = "onfisherman()"><h1 class = "choose2">положить камень в карман</h1></button></div>';
+     var choose = '<div id = "choose"><button class = "f"><h1 class = "choose1" onclick="twitterStory()">попасть в твиттер</h1></button> <button class = "s"><h1 class = "choose2">лежать дальше</h1></button></div>';
     div.innerHTML = choose + div.innerHTML;
     }
-    mybar.style.width = (count*2)+'%';
-    document.getElementsByClassName('stone')[0].style.filter = 'brightness('+(100-count*1.4)+'%)';}
-function story1()
+    mybar.style.width = (count*4)+'%';
+    document.getElementsByClassName('stone')[0].style.filter = 'brightness('+(100-count*1.4)+'%)';
+  }
+
+  function twitterStory()
+  {
+    document.body.style.overflow = 'hidden';
+    var dialog = document.createElement('DIALOG');
+    dialog.id ='twitterW';
+    text = 'Проходящий мимо парень не заметил, что прямо у него на пути лежит камень и споткнулся об него. Он был очень зол на камень и написал о своих негативных впечатлениях от встречи в твиттере.';
+    var dialogText = document.createTextNode(text);
+    var dialogButton = document.createElement('BUTTON');
+    dialogButton.id = 'twitterB';
+    dialogButton.innerHTML = 'Далее';
+    dialogButton.onclick = twitterChoose;
+    document.getElementById('section').appendChild(dialog);
+    dialog.appendChild(dialogText);
+    dialog.appendChild(dialogButton);
+    dialog.show();
+    document.getElementById('choose').remove();
+    document.getElementsByClassName('stone')[0].remove();
+  }
+
+   function twitterChoose() 
+  {
+    var audio = new Audio('злитсо.mp3');
+    audio.volume=1;
+    audio.play();
+    document.getElementById('twitterW').remove();
+    var sec = document.getElementById('section')
+    sec.classList.remove('throw');
+    sec.classList.add('twitterPage');
+    var like = document.createElement('BUTTON');
+    var dislike = document.createElement('BUTTON');
+    var twitter = document.getElementsByClassName('twitterPage');
+    like.appendChild(document.createTextNode('Набрать лайки'));
+    dislike.appendChild(document.createTextNode('Не набирать лайков'));
+    twitter[0].appendChild(like);
+    twitter[0].appendChild(dislike);
+    like.id = 'likeI';
+    dislike.id = 'dislikeI';
+    like.onclick = likePage;
+    // dislike.onclick = dislikePage;
+  }
+
+  function likePage()
+  {
+    var sec = document.getElementById('section');
+    sec.classList.remove('twitterPage');
+    sec.classList.add('likePage');
+    document.getElementById('likeI').remove();
+    document.getElementById('dislikeI').remove();
+    var dialog = document.createElement('DIALOG');
+    var text = 'Твит стал популярным во всем мире. Его увидела женщина, Name, которая следила за всеми новостями о камнях. Наконец-то она нашла то, что давно искала!';
+    dialog.appendChild(document.createTextNode(text))
+    dialog.id = 'twitterW2';
+    var button = document.createElement('BUTTON');
+    button.id = 'twitterB2';
+    button.appendChild(document.createTextNode('далее'));
+    button.onclick = function() {
+    text = 'Name посвятила всю свою жизнь поиску этого камня. Увидев твит, она сразу же написала автору.';
+    dialog.removeChild(dialog.firstChild);
+    dialog.appendChild(document.createTextNode(text));
+    document.getElementById('twitterB2').remove();
+    var yes = document.createElement('BUTTON');
+    var no = document.createElement('BUTTON');
+    yes.appendChild(document.createTextNode('Сказать где камень'));
+    no.appendChild(document.createTextNode('Не говорить'));
+    yes.id = 'say';
+    no.id = 'notsay';
+    dialog.appendChild(yes);
+    dialog.appendChild(no);
+     yes.onclick = function()
+    {
+      dialog.removeChild(dialog.firstChild);
+      dialog.removeChild(dialog.firstChild);
+      dialog.removeChild(dialog.firstChild);
+      text = 'Камень, на самом деле, являлся половиной амулета, который давал неограниченную силу своему владельцу. Вторая половина, из поколения в поколение передавалась в семье Name, но никто не мог найти вторую половину.';
+      dialog.appendChild(document.createTextNode(text));
+      dialog.appendChild(button);
+      button.onclick = monstr;
+    }
+
+    no.onclick = function()
+    {
+      var sec = document.getElementById('section')
+      sec.classList.remove('likePage');
+      document.getElementById('twitterW2').remove();
+      sec.classList.add('cracking');
+      text = 'Камень продолжает лежать, много лет. Но оданажды он трескается и оказывается, что внутри камня был драгоценный камень.';
+      var button = document.createElement('BUTTON');
+      var div = document.createElement('DIV');
+      div.id = 'crackingT';
+      button.id = 'monstrB';
+      button.appendChild(document.createTextNode('далее'));
+      button.onclick = function()
+      {
+        sec.classList.remove('cracking');
+        sec.removeChild(div);
+        sec.classList.add('PutIn');
+        button.id = 'PutB';
+        button.removeChild(button.firstChild);
+        button.appendChild(document.createTextNode('заново'));
+        button.onclick = function()
+        {
+          sec.classList.remove('PutIn');
+          sec.removeChild(div);
+          changeBackground();
+        }
+        div.id = 'PutT';
+        div.removeChild(div.firstChild);
+        div.appendChild(document.createTextNode('Каждая страна хочет присвоить себе этот камень. Начинается третья мировая, Земля взырвается. The End!'));
+        div.appendChild(button);
+        sec.appendChild(div);
+      }
+      div.appendChild(document.createTextNode(text));
+      div.appendChild(button);
+      sec.appendChild(div);
+    }
+  }
+    dialog.appendChild(button);
+    sec.appendChild(dialog);
+    dialog.show();
+}
+
+function monstr()
 {
-  var div = document.getElementById('section');
-  var text = '<h1 class = "text" >Проходящий мимо парень споткнулся об камень и написал злобный твит о камене</h1>'
-  div.innerHTML = text + div.innerHTML;
-  var nextButton = '<button class = "next" onclick = "toTwit()"><h1 class = "nextT">далее</h1></button>';
-  div.innerHTML = nextButton + div.innerHTML;
+  var sec = document.getElementById('section')
+  sec.classList.remove('likePage');
+  sec.classList.add('monstr');
+  var monstrT = document.createElement('DIALOG');
+  monstrT.id ='monstrW';
+  text = 'Женщина надевает амулет, превращаетя в монстра-ящерицу и начинает крушить город. Введено чрезвычайное положение. Войска национальной гвардии сражаются с роботом-ящерицей, но все безуспешно';
+  sec.appendChild(monstrT);
+  var monstrText = document.createTextNode(text);
+  monstrT.appendChild(monstrText)
+  document.getElementById('twitterB2').remove();
+  document.getElementById('twitterW2').remove();
+  var button = document.createElement('BUTTON');
+  button.id = 'monstrB';
+  button.appendChild(document.createTextNode('далее'));
+  monstrT.appendChild(button);
+  monstrT.show();
+  button.onclick = function()
+  {
+    sec.removeChild(monstrT);
+    var button2 = document.createElement('BUTTON');
+    button2.id = 'monstrB2';
+    button2.appendChild(document.createTextNode('упасть с шеи'));
+    var button1 = document.createElement('BUTTON');
+    button1.id = 'monstrB1';
+    button1.appendChild(document.createTextNode('висеть на шее'));
+    sec.appendChild(button2);
+    sec.appendChild(button1);
+   
+    button1.onclick = function(){
+      sec.classList.remove('monstr');
+      var end = document.createElement('DIALOG');
+      end.id ='end';
+      text = 'Алмаз разбивается на маленькие кусочки. Робот ящерица теряет свою силу и взрывается. Человечество спасено. Но все боятся что это может повториться. Люди проводят протесты против камней и украшений с алмазами. В мире введен запрет на ношение камней без документа с разрешением';
+      sec.appendChild(end);
+      end.appendChild(document.createTextNode(text));
+      document.getElementById('monstrB2').remove();
+      document.getElementById('monstrB1').remove();
+      var button3 = document.createElement('BUTTON');
+      button3.id = 'monstrB';
+      button3.appendChild(document.createTextNode('заново'));
+      button3.onclick = function(){
+      section.removeChild(end);
+      changeBackground();
+      }
+      end.appendChild(button3);
+      end.show();
+    }
+   
+    button2.onclick = function(){
+      sec.classList.remove('monstr');
+      var end = document.createElement('DIALOG');
+      end.id ='end';
+      text = 'Робот ящерица захватывает человечество. Все люди служат ей и поклоняются алмазу с камнем, который хранится в самом надежном месте. Камень становится символом нового мира';
+      sec.appendChild(end);
+      end.appendChild(document.createTextNode(text));
+      document.getElementById('monstrB2').remove();
+      document.getElementById('monstrB1').remove();
+      var button3 = document.createElement('BUTTON');
+      button3.id = 'monstrB';
+      button3.appendChild(document.createTextNode('заново'));
+      button3.onclick = function(){
+          section.removeChild(end);
+          changeBackground();
+      }
+      end.appendChild(button3);
+      end.show();
+    }
+  }
 }
 </script>
 </body>
