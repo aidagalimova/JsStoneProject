@@ -1,4 +1,4 @@
-button.start {
+.start {
   background: rgba(58, 31, 10, 0.7);
   border: 3;
   border-color: #170b03;
@@ -12,43 +12,54 @@ body{
    background-image: url('c:/project/photos/back.jpeg');
    background-repeat: no-repeat;
   background-size: cover;
-}
+  height: 600px;}
 #section{
   width: 80%;
-  height: 600px;
+  height: 100%;
   margin-left:  10%;
 }
 #pic{
   width: 80%;
-  height: 600px;
+  height: 100%;
   margin-left:  10%;
 }
 .stone{
   margin-left: 43%;
   margin-top: 20%;
-  height: 200px;
+  height: 37%;
+  width: 19%;
   z-index: 5;
 }
 .t{
-  font-size: 50px;
+  font-size: 350%;
   margin-left: 4%;
   margin-top: -23%;
   font-family: Comic Sans MS;
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
   box-sizing: content-box;
   border: none;
   color: rgba(0,55,255,0.32);
   text-align: center;
-  -o-text-overflow: clip;
   text-overflow: clip;
   text-shadow: 4px 0 9px rgba(255,255,255,0.71) ;
 }
+.t2{
+  font-size: 350%;
+  margin-left: 4%;
+  margin-top: -23%;
+  font-family: Comic Sans MS;
+  box-sizing: content-box;
+  border: none;
+  color: rgba(9,5,3,0.4);
+  text-align: center;
+  text-overflow: clip;
+  text-shadow: 4px 0 9px rgba(255,255,255,0.71) ;
+  }
 #myProgress {
   width: 40%;
+  height: 5%;
   background-color: #1566a6;
   position: absolute;
-  margin-top: 40%;
+  margin-top: 37%;
   margin-left: 20%;
   border-radius: 20%;
   box-shadow: 4px 0 9px rgba(255,255,255,0.71) ;
@@ -56,16 +67,17 @@ body{
 
 #myBar {
   width: 1%;
-  height: 30px;
+  height: 100%;
   background-color: #30cdff;
   border-radius: 20%;
   box-shadow: 4px 0 9px rgba(255,255,255,0.71) ;
 }
 #myProgress2 {
   width: 40%;
-  background-color: #e8a988;
+  height: 5%;
+  background-color: #e4a383;
   position: absolute;
-  margin-top: 40%;
+  margin-top: 37%;
   margin-left: 20%;
   border-radius: 20%;
   box-shadow: 4px 0 9px rgba(255,255,255,0.71) ;
@@ -73,8 +85,8 @@ body{
 
 #myBar2 {
   width: 1%;
-  height: 30px;
-  background-color: #95432e;
+  height: 100%;
+  background-color: #45190c;
   border-radius: 20%;
   box-shadow: 4px 0 9px rgba(255,255,255,0.71) ;
 }
@@ -82,7 +94,7 @@ body{
   background: rgba(58, 31, 10, 0.7);
   border: 3;
   border-color: #170b03;
-  border-radius: 20px;
+  border-radius: 46%;
   margin-left: 28%;
   width: 25%;
   height: 10%;
@@ -92,7 +104,8 @@ body{
 #fishT
 {
  font-family: Comic Sans MS;
-  color: #1d1917;
+ color: #1d1917;
+ text-align: center;
 }
 
 .water {
@@ -136,7 +149,7 @@ body{
   background: rgba(58, 31, 10, 0.7);
   border: 3;
   border-color: #170b03;
-  border-radius: 20px;
+  border-radius: 46%;
   margin-left: 45%;
   margin-top: 35%;
   width: 25%;
@@ -144,9 +157,11 @@ body{
   position: fixed;
 }
 .nextT{
-  font-size: 40px;
+  font-size: 400%;
   color: #655043;
   font-family: Comic Sans MS;
+  text-align: center;
+  margin-top: 0%;
 }
 .fisherman{
   width: 40%;
@@ -156,23 +171,27 @@ body{
   background: rgba(58, 31, 10, 0.7);
   border: 3;
   border-color: #170b03;
-  border-radius: 20px;
+  border-radius: 46%;
   margin-top: 45%;
   margin-left: 30%;
+  width: 25%;
+  height: 15%;
 }
 .s{
    background: rgba(58, 31, 10, 0.7);
   border: 3;
   border-color: #170b03;
-  border-radius: 20px;
+  border-radius: 46%;
+  width: 25%;
+  height: 15%;
 }
 .text{
   background: rgba(58, 31, 10, 0.7);
   border: 3;
   border-color: #170b03;
-  border-radius: 20px;
+  border-radius: 46%;
   width: 40%;
-  height: 200px;
+  height: 30%;
   margin-top: 150px;
   margin-left: 400px;
 }
@@ -186,6 +205,280 @@ body{
 }
 .text{
   background-color: black
+}
+#twitterW
+{
+  width: 70%;
+  height: 75%;
+  margin-top: 5%;
+  background-color: #9865488f;
+  border-radius: 10%;
+  border-color: #2d211b;
+  font-size: 210%;
+  font-family: Comic Sans MS;
+  text-align: center;
+  margin-top: 0%;
+  color: #000000c7;
+}
+#twitterB{
+    width: 30%;
+    height: 15%;
+    margin-top: 15%;
+    margin-left: -25%;
+    background-color: #5c3e2ccc;
+    border: 0;
+    position: fixed;
+    font-size: 200%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #af785b;
+    border-radius: 16%;
+}
+.twitterPage
+{
+  background-image: url('photos/twitter.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  opacity: 0.85;
+}
+#likeI
+{
+    height: 25%;
+    width: 35%;
+    margin-top: 35%;
+    margin-left: 15%;
+    font-size: 210%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #e7e6e6;
+    border-radius: 16%;
+    background-color: #0b1125;
+    border-color: #111213;
+}
+#dislikeI
+{
+    height: 25%;
+    width: 35%;
+    margin-top: 35%;
+    font-size: 210%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #e7e6e6;
+    border-radius: 16%;
+    background-color: #0b1125;
+    border-color: #111213;
+}
+.likePage
+{
+  background-image: url('photos/likes.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.85;
+}
+
+#twitterW2
+{
+    width: 70%;
+    height: 75%;
+    background-color: #282c32;
+    border-radius: 10%;
+    border-color: #272a30;
+    font-size: 210%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    margin-top: 0%;
+    color: #f2ede9;
+    z-index: 99;
+    margin-top: 2%;
+}
+#twitterB2{
+    width: 20%;
+    height: 10%;
+    margin-top: 5%;
+    margin-left: -15%;
+    background-color: #efefef;
+    border: 0;
+    position: fixed;
+    font-size: 100%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #131b24;
+    border-radius: 16%;
+    z-index: 99;
+}
+
+#say{
+    width: 30%;
+    height: 10%;
+    margin-top: 5%;
+    margin-left: -40%;
+    background-color: #efefef;
+    border: 0;
+    position: fixed;
+    font-size: 80%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #131b24;
+    border-radius: 16%;
+    z-index: 999999;
+}
+#notsay
+{
+    width: 20%;
+    height: 10%;
+    margin-top: 5%;
+    background-color: #efefef;
+    border: 0;
+    position: fixed;
+    font-size: 80%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #131b24;
+    border-radius: 16%;
+    z-index: 999999;
+    margin-left: -9%
+}
+
+.cracking {
+  background-image: url('photos/cracking2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 999999;
+}
+
+.PutIn {
+  background-image: url('photos/PutIn.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: 999999;
+}
+
+#PutT{
+ width: 70%;
+    height: 75%;
+    font-size: 250%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    margin-top: 30%;
+    color: #040404;
+    position: fixed;
+    margin-left: 4%;
+    text-shadow: 6px 0 5px rgb(251, 60, 18);
+}
+
+#PutB{
+width: 20%;
+    height: 10%;
+    background-color: #fb3c12;
+    border: 0;
+    position: fixed;
+    font-size: 100%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #4a264a;
+    border-radius: 16%;
+    border-color: #111213;
+}
+
+#crackingT{
+  width: 70%;
+  height: 75%;
+  font-size: 210%;
+  font-family: Comic Sans MS;
+  text-align: center;
+  margin-top: 25%;
+  color: #ffffff;
+  position: fixed;
+  margin-left: 4%;
+  text-shadow: 6px 0 5px rgb(0, 0, 1);
+}
+
+.monstr
+{
+  background-image: url('photos/back.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+}
+
+#monstrW
+{
+    width: 70%;
+    height: 30%;
+    background-color: #282c32;
+    border-radius: 10%;
+    border-color: #272a30;
+    font-size: 190%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    margin-top: 0%;
+    color: #f2ede9;
+    z-index: 999;
+    margin-top: 23%;
+    opacity: 0.8;
+}
+
+#monstrB{
+    width: 20%;
+    height: 10%;
+    background-color: #efefef;
+    border: 0;
+    position: fixed;
+    font-size: 100%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #131b24;
+    border-radius: 16%;
+    border-color: #111213;
+}
+
+#monstrB1{
+    width: 20%;
+    height: 10%;
+    background-color: #efefef;
+    border: 0;
+    position: fixed;
+    font-size: 100%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #131b24;
+    border-radius: 16%;
+    margin-top: 30%;
+    margin-left: 17%;
+}
+#monstrB2{
+    width: 20%;
+    height: 10%;
+    background-color: #efefef;
+    border: 0;
+    position: fixed;
+    font-size: 100%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #131b24;
+    border-radius: 16%;
+    margin-top: 30%;
+    margin-left: 40%;
+}
+
+#end
+{
+    height: 75%;
+    width: 65%;
+    font-size: 250%;
+    font-family: Comic Sans MS;
+    text-align: center;
+    color: #111213;
+    border-radius: 16%;
+    background-color: #785247;
+    border-color: #111213;
 }
 h2 {
   color: #170b03;
